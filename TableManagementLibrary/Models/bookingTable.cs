@@ -35,8 +35,10 @@ namespace TableManagementLibrary.Models
         /// <summary>
         /// PhoneNumber
         /// </summary>
-        [Required]
+        
         [Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Phone Number no. is required")]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid Phone Number")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -44,6 +46,8 @@ namespace TableManagementLibrary.Models
         /// </summary>
         [Required]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
         /// <summary>
@@ -63,13 +67,13 @@ namespace TableManagementLibrary.Models
         /// TableId
         /// </summary>
         [ForeignKey("TableId")]
-        [Display(Name = "Tables")]
+        [Display(Name = "Table")]
         public int TableId { get; set; }
 
         /// <summary>
         /// Tables
         /// </summary>
-        public tables Tables { get; set; }
+        public tables Table { get; set; }
 
         /// <summary>
         /// FoodId
@@ -81,19 +85,19 @@ namespace TableManagementLibrary.Models
         /// <summary>
         /// FoodTypes
         /// </summary>
-        public foodType FoodTypes { get; set; }
+        public foodType Type { get; set; }
 
         /// <summary>
         /// FlowerId
         /// </summary>
         [ForeignKey("FlowerId")]
-        [Display(Name = "Flowers")]
+        [Display(Name = "Flower")]
         public int FlowerId { get; set; }
 
         /// <summary>
         /// Flowers
         /// </summary>
-        public flowers Flowers { get; set; }
+        public flowers Flower { get; set; }
 
         /// <summary>
         /// TablePositionId
@@ -106,14 +110,28 @@ namespace TableManagementLibrary.Models
         /// TablePositions
         /// </summary>
         public tablePosition TablePositions { get; set; }
-        
 
-         /// <summary>
+
+
+        /// <summary>
+        /// DateTime
+        /// </summary>
+        [Required]
+        [Display(Name = "Date Time")]
+        public DateTime DateTime { get; set; }
+
+        /// <summary>
         /// SpecialNotes
         /// </summary>
         [Required]
         [Display(Name = "Special Notes")]
         public string SpecialNotes { get; set; }
+
+        /// <summary>
+        /// Status
+        /// </summary>
+        [Display(Name = "Status")]
+        public bool Status { get; set; }
 
 
 

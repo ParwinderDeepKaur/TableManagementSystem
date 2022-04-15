@@ -17,6 +17,8 @@ namespace TableManagementLibrary.Data
         public DbSet<flowers> Flowers { get; set; }
         public DbSet<bookingTable> BookingTable { get; set; }
 
+        public DbSet<guest> Guests { get; set; }
+
         public string DbPath { get; private set; }
 
         public ApplicationDbContext()

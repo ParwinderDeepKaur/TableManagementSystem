@@ -44,7 +44,10 @@ namespace TableManagementSystem
             services.AddScoped<IFlowers, FlowerService>();
             services.AddScoped<ITables, TablesService>();
             services.AddScoped<ITablePosition, TablesPositionService>();
-
+            services.AddScoped<IMeal, MealService>();
+            services.AddScoped<IFoodType, FoodTypeService>();
+            services.AddScoped<IGuest, GuestService>();
+            services.AddScoped<IBooking, BookingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

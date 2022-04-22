@@ -5,6 +5,7 @@ using TableManagementLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TableManagementLibrary.Interface;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TableManagementLibrary
 {
@@ -30,6 +31,18 @@ namespace TableManagementLibrary
         }
 
         /// <summary>
+        /// Get drop down list
+        /// </summary>
+        /// <returns></returns>
+        public SelectList GetTableDDL()
+        {
+
+            var list = new SelectList(_context.Tables, "TableId", "Table");
+
+            return list;
+        }
+
+        /// <summary>
         /// get record by id
         /// </summary>
         /// <param name="id"></param>
@@ -40,12 +53,26 @@ namespace TableManagementLibrary
    
         }
 
+        
+
+        /// <summary>
+        /// get record by table name
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public async Task<tables> GetTableByTableName(string tableName)
+        {
+            return await _context.Tables.FirstOrDefaultAsync(
+                m => m.TableName.Trim().ToLower() == tableName.Trim().ToLower());
+
+        }
+
         /// <summary>
         /// create record
         /// </summary>
         /// <param name="tables"></param>
         /// <returns></returns>
-          public async Task<bool> CreateAsync(tables tables)
+        public async Task<bool> CreateAsync(tables tables)
         {
             _context.Tables.Add(tables);
             await _context.SaveChangesAsync();

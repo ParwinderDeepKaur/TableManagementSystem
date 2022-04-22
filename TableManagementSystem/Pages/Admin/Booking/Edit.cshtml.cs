@@ -7,45 +7,53 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using TableManagementLibrary.Data;
+using TableManagementLibrary.Interface;
 using TableManagementLibrary.Models;
 
 namespace TableManagementSystem.Pages.Admin.Booking
 {
     public class EditModel : PageModel
     {
-        private readonly TableManagementLibrary.Data.ApplicationDbContext _context;
+        private readonly IBooking _booking;
+        private readonly IFlowers _flowers;
+        private readonly IMeal _meal;
+        private readonly ITables _table;
+        private readonly IFoodType _foodType;
+        private readonly ITablePosition _tablePosition;
 
-        public EditModel(TableManagementLibrary.Data.ApplicationDbContext context)
+
+        public EditModel(IBooking booking,
+            IFlowers flowers, IMeal meal,
+            ITables table,
+            IFoodType foodtype,
+            ITablePosition tablePosition)
         {
-            _context = context;
+            _booking = booking;
+            _flowers = flowers;
+            _meal = meal;
+            _table = table;
+            _foodType = foodtype;
+            _tablePosition = tablePosition;
         }
 
         [BindProperty]
         public bookingTable bookingTable { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            bookingTable = await _context.BookingTable
-                .Include(b => b.Flower)
-                .Include(b => b.Meals)
-                .Include(b => b.Table)
-                .Include(b=>b.Type)
-                .Include(b => b.TablePositions).FirstOrDefaultAsync(m => m.Id == id);
+
+            bookingTable = await _booking.GetBookingById(id);
 
             if (bookingTable == null)
             {
                 return NotFound();
             }
-           ViewData["FlowerId"] = new SelectList(_context.Flowers, "FlowerId", "Name");
-           ViewData["MealId"] = new SelectList(_context.Meal, "MealId", "Name");
-           ViewData["TableId"] = new SelectList(_context.Tables, "TableId", "TableName");
-            ViewData["FoodId"] = new SelectList(_context.FoodType, "FoodId", "Name");
-            ViewData["TablePositionId"] = new SelectList(_context.tablePosition, "TablePositionId", "Position");
+            ViewData["FlowerId"] = _flowers.GetFlowersDDL();
+            ViewData["MealId"] = _meal.GetMealDDL();
+            ViewData["TableId"] = _table.GetTableDDL();
+            ViewData["FoodId"] = _foodType.GetFoodTypeDDL();
+            ViewData["TablePositionId"] = _tablePosition.GetTablePositionDDL();
             return Page();
         }
 
@@ -57,16 +65,15 @@ namespace TableManagementSystem.Pages.Admin.Booking
             {
                 return Page();
             }
-
-            _context.Attach(bookingTable).State = EntityState.Modified;
+          
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _booking.UpdateAsync(bookingTable);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!bookingTableExists(bookingTable.Id))
+                if (!_booking.bookingExists(bookingTable.Id))
                 {
                     return NotFound();
                 }
@@ -79,9 +86,6 @@ namespace TableManagementSystem.Pages.Admin.Booking
             return RedirectToPage("./Index");
         }
 
-        private bool bookingTableExists(int id)
-        {
-            return _context.BookingTable.Any(e => e.Id == id);
-        }
+
     }
 }

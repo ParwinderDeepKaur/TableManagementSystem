@@ -25,7 +25,12 @@ namespace TableManagementLibrary
         public async Task<IList<bookingTable>> GetBookingList()
         {
 
-           var booking = await _context.BookingTable.ToListAsync();
+           var booking  = await _context.BookingTable
+               .Include(b => b.Flower)
+               .Include(b => b.Meals)
+               .Include(b => b.Table)
+               .Include(b => b.Type)
+               .Include(b => b.TablePositions).ToListAsync();
 
             return booking;
         }
@@ -37,8 +42,44 @@ namespace TableManagementLibrary
         /// <returns></returns>
         public async Task<bookingTable> GetBookingById(int id)
         {
-            return await _context.BookingTable.FirstOrDefaultAsync(m => m.Id == id);
+            return await _context.BookingTable
+                .Include(b => b.Flower)
+                .Include(b => b.Meals)
+                .Include(b => b.Table)
+                .Include(b => b.TablePositions).FirstOrDefaultAsync(m => m.Id == id);
    
+        }
+
+
+        /// <summary>
+        /// get booking by table id
+        /// </summary>
+        /// <param name="bookingTable"></param>
+        /// <returns></returns>
+        public async Task<bookingTable> GetBookingByTable(bookingTable book)
+        {
+            return await _context.BookingTable
+                .Include(b => b.Flower)
+                .Include(b => b.Meals)
+                .Include(b => b.Table)
+                .Include(b => b.TablePositions).FirstOrDefaultAsync(
+                m => m.TableId == book.TableId && m.MealId==book.MealId);
+
+        }
+
+        /// <summary>
+        /// get booking by date
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<bookingTable>> GetBookingByDate()
+        {
+            return await _context.BookingTable
+                .Include(b => b.Flower)
+                .Include(b => b.Meals)
+                .Include(b => b.Table)
+                .Include(b => b.TablePositions).Where(
+                c=>c.DateTime.Date<= DateTime.Today.AddDays(-1) && c.Status==false).ToListAsync();
+
         }
 
 
@@ -47,7 +88,7 @@ namespace TableManagementLibrary
         /// </summary>
         /// <param name="booking"></param>
         /// <returns></returns>
-          public async Task<bool> CreateAsync(bookingTable booking)
+        public async Task<bool> CreateAsync(bookingTable booking)
         {
             _context.BookingTable.Add(booking);
             await _context.SaveChangesAsync();

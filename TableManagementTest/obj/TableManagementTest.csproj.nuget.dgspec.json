@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj": {}
+    "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj": {}
   },
   "projects": {
-    "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj": {
+    "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj",
+        "projectUniqueName": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj",
         "projectName": "TableManagementLibrary",
-        "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj",
+        "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\obj\\",
+        "outputPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -93,14 +93,14 @@
         }
       }
     },
-    "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj": {
+    "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj",
+        "projectUniqueName": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj",
         "projectName": "TableManagementSystem",
-        "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj",
+        "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem\\obj\\",
+        "outputPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -122,8 +122,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj": {
-                "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj"
+              "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj": {
+                "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj"
               }
             }
           }
@@ -195,14 +195,14 @@
         }
       }
     },
-    "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj": {
+    "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj",
+        "projectUniqueName": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj",
         "projectName": "TableManagementTest",
-        "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj",
+        "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementTest\\TableManagementTest.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementTest\\obj\\",
+        "outputPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
@@ -224,11 +224,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj": {
-                "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj"
+              "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj": {
+                "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj"
               },
-              "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj": {
-                "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj"
+              "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj": {
+                "projectPath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementSystem\\TableManagementSystem.csproj"
               }
             }
           }

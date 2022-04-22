@@ -34,8 +34,13 @@ namespace TableManagementSystem.Pages.Admin.Food
             {
                 return Page();
             }
+            foodType result = await _foodType.GetFoodTypeByName(foodType.Name);
+            if (result != null)
+            {
+                ModelState.AddModelError(string.Empty, "food type already exists");
+                return Page();
+            }
 
-            
             await _foodType.CreateAsync(foodType);
 
             return RedirectToPage("./Index");

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TableManagementLibrary.Interface;
 using TableManagementLibrary.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TableManagementLibrary
 {
@@ -31,14 +32,39 @@ namespace TableManagementLibrary
         }
 
         /// <summary>
+        /// Get drop down list
+        /// </summary>
+        /// <returns></returns>
+        public SelectList GetMealDDL()
+        {
+
+            var list = new SelectList(_context.Meal, "MealId", "Name");
+
+            return list;
+        }
+
+        /// <summary>
+        /// get meal by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<meal> GetMealByName(string name)
+        {
+            return await _context.Meal.FirstOrDefaultAsync(
+                m => m.Name.Trim().ToLower() == name.Trim().ToLower()); 
+   
+        }
+
+        /// <summary>
         /// get meal by id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
         public async Task<meal> GetMealById(int id)
         {
-            return await _context.Meal.FirstOrDefaultAsync(m => m.MealId == id);
-   
+            return await _context.Meal.FirstOrDefaultAsync(
+                m => m.MealId==id);
+
         }
 
 
@@ -47,7 +73,7 @@ namespace TableManagementLibrary
         /// </summary>
         /// <param name="meal"></param>
         /// <returns></returns>
-          public async Task<bool> CreateAsync(meal meal)
+        public async Task<bool> CreateAsync(meal meal)
         {
             _context.Meal.Add(meal);
             await _context.SaveChangesAsync();

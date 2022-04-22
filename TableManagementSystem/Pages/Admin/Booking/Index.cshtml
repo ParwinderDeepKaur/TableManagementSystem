@@ -8,7 +8,7 @@
 <h1>Booking Table</h1>
 
 <p>
-    <a  asp-page="Create">Create New</a>
+    <a class="btn-primary set-button"  asp-page="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -22,30 +22,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.bookingTable[0].PhoneNumber)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.bookingTable[0].Email)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.bookingTable[0].Meals)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.bookingTable[0].Table)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bookingTable[0].FoodId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bookingTable[0].Flower)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bookingTable[0].TablePositions)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.bookingTable[0].DateTime)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bookingTable[0].SpecialNotes)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.bookingTable[0].Status)
             </th>
@@ -64,9 +54,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Meals.Name)
             </td>
@@ -74,27 +64,24 @@
                 @Html.DisplayFor(modelItem => item.Table.TableName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Flower.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TablePositions.Position)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SpecialNotes)
+                @if (item.Status)
+                {
+
+
+<label>Complete</label>
+                }
+                else { 
+                <label>Booked</label>
+                }
+                @*@Html.DisplayFor(modelItem => item.Status)*@
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn-success set-button" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn-primary set-button" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn-danger set-button" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

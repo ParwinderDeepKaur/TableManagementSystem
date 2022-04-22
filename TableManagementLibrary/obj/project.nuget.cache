@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M4oYDV5TUBNu83Rg8GAC8BWk3lRBcGb3xsQ1Wq0wljmQzCcRHT+zBE8vb7cRP9kygQtUz0LZQCfU6SywEObpYQ==",
+  "dgSpecHash": "8CuR53bp0C4OVgGuuszX9kXRO3vHKi19GmYoWBXa6+nGQ80JYKqW7X3EDu/n2k4Ge9Co7ouTdcDpcm7nd2lOOw==",
   "success": true,
-  "projectFilePath": "D:\\Cambrian Classes\\Semester 2\\.net\\project\\TableManagementSystem\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj",
+  "projectFilePath": "D:\\Cambrian Classes\\Semester 2\\.net\\TableManagementSystem\\TableManagementLibrary\\TableManagementLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.12\\microsoft.aspnetcore.cryptography.internal.5.0.12.nupkg.sha512",

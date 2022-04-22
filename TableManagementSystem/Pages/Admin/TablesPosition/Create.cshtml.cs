@@ -37,7 +37,12 @@ namespace TableManagementSystem.Pages.Admin.TablesPosition
             {
                 return Page();
             }
-
+            tablePosition result = await _tables.GetTablePositionByName(tablePosition.Position);
+            if (result != null)
+            {
+                ModelState.AddModelError(string.Empty, "Table position already exists");
+                return Page();
+            }
 
             await _tables.CreateAsync(tablePosition);
 

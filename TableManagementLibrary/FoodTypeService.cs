@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TableManagementLibrary.Interface;
 using TableManagementLibrary.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TableManagementLibrary
 {
@@ -31,6 +32,18 @@ namespace TableManagementLibrary
         }
 
         /// <summary>
+        /// Get drop down list
+        /// </summary>
+        /// <returns></returns>
+        public SelectList GetFoodTypeDDL()
+        {
+
+            var list = new SelectList(_context.FoodType, "FoodId", "Name");
+
+            return list;
+        }
+
+        /// <summary>
         /// get food type by id
         /// </summary>
         /// <param name="id"></param>
@@ -41,13 +54,25 @@ namespace TableManagementLibrary
    
         }
 
+        /// <summary>
+        /// get food type by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<foodType> GetFoodTypeByName(string name)
+        {
+            return await _context.FoodType.FirstOrDefaultAsync(
+                m => m.Name.Trim().ToLower() == name.Trim().ToLower());
+
+        }
+
 
         /// <summary>
         /// create food type record
         /// </summary>
         /// <param name="foodType"></param>
         /// <returns></returns>
-          public async Task<bool> CreateAsync(foodType foodType)
+        public async Task<bool> CreateAsync(foodType foodType)
         {
             _context.FoodType.Add(foodType);
             await _context.SaveChangesAsync();

@@ -23,6 +23,19 @@ namespace TableManagementLibrary.Interface
          Task<bookingTable> GetBookingById(int id);
 
         /// <summary>
+        /// get booking by obj
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<bookingTable> GetBookingByTable(bookingTable book);
+
+        /// <summary>
+        /// get table by date
+        /// </summary>
+        /// <returns></returns>
+        Task<IList<bookingTable>> GetBookingByDate();
+
+        /// <summary>
         /// create record
         /// </summary>
         /// <param name="booking"></param>

@@ -35,8 +35,9 @@ namespace TableManagementLibrary.Models
         /// <summary>
         /// Phone Number
         /// </summary>
-        [Required]
         [Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Phone Number no. is required")]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid Phone Number")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -44,6 +45,8 @@ namespace TableManagementLibrary.Models
         /// </summary>
         [Required]
         [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
 

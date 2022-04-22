@@ -6,29 +6,32 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TableManagementLibrary.Data;
+using TableManagementLibrary.Interface;
 using TableManagementLibrary.Models;
 
 namespace TableManagementSystem.Pages.Admin.Booking
 {
     public class IndexModel : PageModel
     {
-        private readonly TableManagementLibrary.Data.ApplicationDbContext _context;
+        private readonly IBooking _booking;
 
-        public IndexModel(TableManagementLibrary.Data.ApplicationDbContext context)
+        public IndexModel(IBooking booking)
         {
-            _context = context;
+            _booking = booking;
         }
 
         public IList<bookingTable> bookingTable { get;set; }
 
         public async Task OnGetAsync()
         {
-            bookingTable = await _context.BookingTable
-                .Include(b => b.Flower)
-                .Include(b => b.Meals)
-                .Include(b => b.Table)
-                 .Include(b => b.Type)
-                .Include(b => b.TablePositions).ToListAsync();
+            var result = await _booking.GetBookingByDate();
+
+            foreach (var item in result)
+            {
+                item.Status = true;
+                await _booking.UpdateAsync(item);
+            }
+            bookingTable = await _booking.GetBookingList();
         }
     }
 }

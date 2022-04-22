@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using TableManagementLibrary.Interface;
 using TableManagementLibrary.Data;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TableManagementLibrary
 {
@@ -31,6 +32,18 @@ namespace TableManagementLibrary
         }
 
         /// <summary>
+        /// get flower Drop Down list
+        /// </summary>
+        /// <returns></returns>
+        public SelectList GetFlowersDDL()
+        {
+
+           var list= new SelectList(_context.Flowers, "FlowerId", "Name");
+
+            return list;
+        }
+
+        /// <summary>
         /// get flower by id
         /// </summary>
         /// <param name="id"></param>
@@ -41,13 +54,25 @@ namespace TableManagementLibrary
    
         }
 
+        /// <summary>
+        /// get flower by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public async Task<flowers> GetFlowerByName(string name)
+        {
+            return await _context.Flowers.FirstOrDefaultAsync(
+                m => m.Name.Trim().ToLower() == name.Trim().ToLower());
+
+        }
+
 
         /// <summary>
         /// create flower record
         /// </summary>
         /// <param name="flowers"></param>
         /// <returns></returns>
-          public async Task<bool> CreateAsync(flowers flowers)
+        public async Task<bool> CreateAsync(flowers flowers)
         {
             _context.Flowers.Add(flowers);
             await _context.SaveChangesAsync();

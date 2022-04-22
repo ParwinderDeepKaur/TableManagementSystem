@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,24 @@ namespace TableManagementLibrary.Interface
          Task<IList<foodType>> GetFoodTypeList();
 
         /// <summary>
+        /// Get drop down list
+        /// </summary>
+        /// <returns></returns>
+        SelectList GetFoodTypeDDL();
+
+        /// <summary>
         /// get food type by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
          Task<foodType> GetFoodTypeById(int id);
+
+        /// <summary>
+        /// get food type by name
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<foodType> GetFoodTypeByName(string name);
 
         /// <summary>
         /// create record

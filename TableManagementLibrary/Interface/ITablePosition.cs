@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,24 @@ namespace TableManagementLibrary.Interface
          Task<IList<tablePosition>> GetTablePositionList();
 
         /// <summary>
+        /// Get drop down list
+        /// </summary>
+        /// <returns></returns>
+        SelectList GetTablePositionDDL();
+
+        /// <summary>
         /// get record by id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
          Task<tablePosition> GetTablePositionById(int? id);
+
+        /// <summary>
+        /// get record by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Task<tablePosition> GetTablePositionByName(string name);
 
         /// <summary>
         /// create record

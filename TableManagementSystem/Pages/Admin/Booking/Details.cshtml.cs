@@ -6,33 +6,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TableManagementLibrary.Data;
+using TableManagementLibrary.Interface;
 using TableManagementLibrary.Models;
 
 namespace TableManagementSystem.Pages.Admin.Booking
 {
     public class DetailsModel : PageModel
     {
-        private readonly TableManagementLibrary.Data.ApplicationDbContext _context;
+        private readonly IBooking _booking;
 
-        public DetailsModel(TableManagementLibrary.Data.ApplicationDbContext context)
+        public DetailsModel(IBooking booking)
         {
-            _context = context;
+            _booking = booking;
         }
 
         public bookingTable bookingTable { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            
 
-            bookingTable = await _context.BookingTable
-                .Include(b => b.Flower)
-                .Include(b => b.Meals)
-                .Include(b => b.Table)
-                .Include(b => b.TablePositions).FirstOrDefaultAsync(m => m.Id == id);
+            bookingTable = await _booking.GetBookingById(id);
 
             if (bookingTable == null)
             {

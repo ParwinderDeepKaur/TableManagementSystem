@@ -6,34 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TableManagementLibrary.Data;
+using TableManagementLibrary.Interface;
 using TableManagementLibrary.Models;
 
 namespace TableManagementSystem.Pages.Admin.Booking
 {
     public class DeleteModel : PageModel
     {
-        private readonly TableManagementLibrary.Data.ApplicationDbContext _context;
+        private readonly IBooking _booking;
 
-        public DeleteModel(TableManagementLibrary.Data.ApplicationDbContext context)
+        public DeleteModel(IBooking booking)
         {
-            _context = context;
+            _booking = booking;
         }
 
         [BindProperty]
         public bookingTable bookingTable { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            bookingTable = await _context.BookingTable
-                .Include(b => b.Flower)
-                .Include(b => b.Meals)
-                .Include(b => b.Table)
-                .Include(b => b.TablePositions).FirstOrDefaultAsync(m => m.Id == id);
+
+            bookingTable = await _booking.GetBookingById(id);
 
             if (bookingTable == null)
             {
@@ -42,19 +36,16 @@ namespace TableManagementSystem.Pages.Admin.Booking
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+           
 
-            bookingTable = await _context.BookingTable.FindAsync(id);
+            bookingTable = await _booking.GetBookingById(id);
 
             if (bookingTable != null)
             {
-                _context.BookingTable.Remove(bookingTable);
-                await _context.SaveChangesAsync();
+
+                await _booking.DeleteAsysn(bookingTable);
             }
 
             return RedirectToPage("./Index");

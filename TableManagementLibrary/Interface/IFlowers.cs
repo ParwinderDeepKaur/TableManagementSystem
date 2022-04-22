@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,19 @@ namespace TableManagementLibrary.Interface
         /// </summary>
         /// <returns></returns>
          Task<IList<flowers>> GetFlowersList();
+
+        /// <summary>
+        /// Get drop down list
+        /// </summary>
+        /// <returns></returns>
+        SelectList GetFlowersDDL();
+
+        /// <summary>
+        /// get record by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        Task<flowers> GetFlowerByName(string name);
 
         /// <summary>
         /// get record by id

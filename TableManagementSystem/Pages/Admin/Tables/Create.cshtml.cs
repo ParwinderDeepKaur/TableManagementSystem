@@ -38,7 +38,12 @@ namespace TableManagementSystem.Pages.Admin.Tables
                 return Page();
             }
 
-
+            tables result = await _tables.GetTableByTableName(tables.TableName);
+            if (result!=null)
+            {
+                ModelState.AddModelError(string.Empty, "Table already exists");
+                return Page();
+            }
             await _tables.CreateAsync(tables);
 
             return RedirectToPage("./Index");

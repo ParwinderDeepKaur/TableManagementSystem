@@ -36,6 +36,12 @@ namespace TableManagementSystem.Pages.Admin.Meal
                 return Page();
             }
 
+            meal result = await _meal.GetMealByName(meal.Name);
+            if (result != null)
+            {
+                ModelState.AddModelError(string.Empty, "meal already exists");
+                return Page();
+            } 
 
             await _meal.CreateAsync(meal);
 

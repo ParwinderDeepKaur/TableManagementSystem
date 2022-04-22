@@ -38,6 +38,12 @@ namespace TableManagementSystem.Pages.Admin.Flowers
             {
                 return Page();
             }
+            flowers result = await _flowers.GetFlowerByName(flowers.Name);
+            if (result != null)
+            {
+                ModelState.AddModelError(string.Empty, "Flowers already exists");
+                return Page();
+            }
 
             await _flowers.CreateAsync(flowers);
 
